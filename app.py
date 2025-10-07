@@ -3,14 +3,7 @@ from flask_cors import CORS
 from routes import health, geocode, weather, suggest, itinerary
 
 app = Flask(__name__)
-CORS(app, resources={
-    r"/api/*": {
-        "origins": "*",
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"],
-        "max_age": 3600
-    }
-})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config['TIMEOUT'] = 120
 
