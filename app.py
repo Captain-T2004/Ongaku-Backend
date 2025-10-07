@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from routes import health, geocode, weather, suggest, itinerary
 
 app = Flask(__name__)
 CORS(app, resources={
@@ -12,6 +13,12 @@ CORS(app, resources={
 })
 
 app.config['TIMEOUT'] = 120
+
+app.register_blueprint(health.bp)
+app.register_blueprint(geocode.bp)
+app.register_blueprint(weather.bp)
+app.register_blueprint(suggest.bp)
+app.register_blueprint(itinerary.bp)
 
 if __name__ == '__main__':
     print("=" * 70)
